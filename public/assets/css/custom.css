@@ -1,0 +1,132 @@
+/*============================================================================================*/
+/* Your custom styles below */
+/*============================================================================================*/
+.errors-message {
+    font-family: "Poppins", Helvetica, sans-serif !important;
+    text-transform: lowercase !important;
+    color: #e74e84 !important;
+    font-size: small;
+}
+
+.btn-reomve {
+    background: none;
+    border: none;
+    color: #3f4079;
+}
+
+label[for=profile_image] {
+    display: block;
+    cursor: pointer;
+    font-weight: bold;
+    transition: .2s;
+}
+
+label[for=profile_image]:hover {
+    color: #373869;
+}
+
+label[for=profile_image]>i {
+    font-size: 30px;
+    display: inline-block;
+}
+
+label[for=profile_image]>span {
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    position: relative;
+    bottom: 6px;
+    left: 5px;
+}
+
+input[name=profile_image] {
+    display: none;
+}
+
+span#alertMessage {
+    color: rebeccapurple;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    font-weight: bold;
+    display: block;
+    margin: 10px auto;
+    display: none;
+}
+
+button.btn-none {
+    background: none;
+    border: 1px solid #373869;
+    font-weight: normal;
+    color: #373869;
+    transition: .2s;
+}
+
+button.btn-none:hover {
+    background: #373869;
+    color: #fff;
+}
+
+button.btn-none-1{
+    background: none;
+    border: none;
+    color: #373869;
+    font-weight: bolder;
+    border: 1px solid #ccc;
+    padding: 8px 10px;
+    transition: .5s;
+}
+button.btn-none-1>i{
+    font-size: 30px;
+    padding: 5px;
+}
+
+button.btn-none-1:hover
+{
+    background: #373869;
+    color: #fff;
+}
+
+#profile_form label[for=profile_image]>i {
+    display: inline-block !important;
+    font-size: 25px;
+    position: relative;
+    top: 7px;
+    right: 5px;
+}
+
+#profile_form label[for=profile_image]>span {
+    font-size: 12px;
+}
+
+#profile_form span#alertMessage {
+    font-size: 11px;
+}
+
+#editAddress , #editPhone ,#editSecurity, #editInfo{
+    cursor: pointer;
+}
+
+#infoSpan{
+    font-size: 15px;
+    text-align: center;
+    line-height: 25px;
+}
+
+form#addressEditForm,  form#phoneEditForm, form#securityForm ,form#infoForm{
+    margin: 10px 0px;
+    display: none;
+}
+
+#relogin {
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: lighter;
+    font-size: 13px;
+    color: #e74e84;
+}
+
+#c_model{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

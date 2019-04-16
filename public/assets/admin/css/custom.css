@@ -1,0 +1,8 @@
+/* YOUR CUSTOM CSS */
+.text-style-1 {
+    background: #3f4079;
+    color: #fff;
+    font-weight: bold;
+    text-transform: capitalize;
+    letter-spacing: 2px
+}
