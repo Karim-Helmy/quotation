@@ -3,15 +3,15 @@
     @include('includes.breadcrumbs')
 <div id="app">
     <app-consultant-component
-    firstname="{{ getLanguageValue('FirstName') }}"
-    lastname="{{ getLanguageValue('LastName') }}"
-    email="{{ getLanguageValue('Email') }}"
-    confirm-email="{{ getLanguageValue('ConfirmEmail') }}"
-    contactinfo="{{ getLanguageValue('ContactInfo') }}"
-    laravelroute="{{ route('consultant.store') }}"
-    phone="{{ getLanguageValue('Phone') }}"
-    message="{{ getLanguageValue('Message') }}"
-    submit-request="{{ getLanguageValue('submitRequest') }}">
+    firstname="FirstName"
+    lastname="LastName"
+    email="Email"
+    confirm-email="ConfirmEmail"
+    contactinfo="ContactInfo"
+    laravelroute="consultant.store"
+    phone="Phone"
+    message="Message"
+    submit-request="submitRequest">
     @include('includes.errors')
     </app-consultant-component>
 </div>

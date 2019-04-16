@@ -91,6 +91,8 @@ Route::group(['namespace' => 'Web'], function () {
         ->where(['username' => '[a-z0-9]+(?:-[a-z0-9]+)*'])
         ->name('profile.public');
     Route::get('/doctors', 'UsefulLinksController@doctors')->name('doctors');
+
+
 });
 // Success Route
 Route::get('/success', function () {
