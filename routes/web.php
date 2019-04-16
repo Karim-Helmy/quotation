@@ -22,21 +22,8 @@ Auth::routes();
 Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
     Route::get('/', 'AdminController@index')->name('admin.dashboard');
-    /* -- -- -- FAQ STARTS -- -- -- */
-    // F A Q C A T E G O R I E S
-    Route::get('/faq/category/create', 'FaqController@createCategory')->name('create_faq_category');
-    Route::post('/faq/category/store', 'FaqController@storeCategory')->name('store_category_faq');
-    Route::get('/faq/category/{id}/edit', 'FaqController@editCategory')
-        ->where('id', '[0-9]+')->name('edit_faq_category');
-    Route::patch('/faq/category/{id}/edit', 'FaqController@updateCategory')
-        ->where('id', '[0-9]+')->name('update_category_faq');
-    Route::delete('/faq/category/delete', 'FaqController@deleteCategory')->name('delete_faq_category');
-    // F A Q
-    Route::resource('faq', 'FaqController');
-    /* -- -- -- FAQ Ends -- -- -- */
-    // Products
-    Route::resource('products', 'ProductController');
-    /* -- -- -- Products Ends -- -- -- */
+
+
     /* -- -- -- Languages STARTS -- -- -- */
     Route::get('languages', 'LanguagesController@index')->name('languages_index');
     Route::get('language/create', 'LanguagesController@create')->name('language_new');
@@ -63,15 +50,6 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin', 'namespace
     Route::post('/settings/update', 'SettingsController@setting_save')->name('settings_update');
     /* -- -- -- Website Settings Ends -- -- -- */
 
-    /* -- -- -- Countries STARTS -- -- -- */
-    Route::get('/countries', 'CountriesController@index')->name('countries.index');
-    Route::get('/countries/create', 'CountriesController@create')->name('countries.create');
-    Route::post('/countries/store', 'CountriesController@store')->name('countries.store');
-    Route::get('/countries/edit/{id}', 'CountriesController@edit')->name('countries.edit')->where('id', '[0-9]+');
-    Route::patch('/countries/update/{id}', 'CountriesController@update')->name('countries.update')->where('id', '[0-9]+');
-    Route::delete('/countries/{id}/delete', 'CountriesController@destroy')->name('countries.delete')->where('id', '[0-9]+');
-    Route::get('/countries/cities/{id}', 'CountriesController@show')->name('countries.show')->where('id', '[0-9]+');
-    /* -- -- -- Countries Ends -- -- -- */
 
     /* -- -- -- Consultant Module Starts -- -- -- */
     Route::get('/consultants', 'ConsultantsController@index')->name('admin.consultant.index');
@@ -79,13 +57,8 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin', 'namespace
     Route::post('/consultant/assign', 'ConsultantsController@assign')->name('admin.consultant.sendDoctor');
     /* -- -- -- Consultant Module Ends -- -- -- */
 
-    /* -- -- -- VIDEOS DISEASES STARTS -- -- -- */
-    Route::resource('videos', 'VideosController');
-    /* -- -- -- VIDEOS DISEASES ENDS -- -- -- */
 
-    /* -- -- -- DISEASES STARTS -- -- -- */
-    Route::resource('diseases-categories', 'DiseaseController');
-    /* -- -- -- DISEASES ENDS -- -- -- */
+
 });
 /* -- -- -- -- Admin Routes Ends -- -- -- -- */
 
@@ -113,13 +86,11 @@ Route::group(['middleware' => 'auth', 'namespace' => 'User'], function () {
 /* -- -- -- -- Public Routes Starts -- -- -- -- */
 Route::group(['namespace' => 'Web'], function () {
     Route::get('/', 'HomeController@index')->name('home');
-    Route::get('/faq', 'FaqController@index')->name('faq');
+
     Route::get('{username}/profile', 'ProfileController@publicProfile')
         ->where(['username' => '[a-z0-9]+(?:-[a-z0-9]+)*'])
         ->name('profile.public');
     Route::get('/doctors', 'UsefulLinksController@doctors')->name('doctors');
-    Route::get('/videos', 'UsefulLinksController@vidoes')->name('videos');
-    Route::get('/video/{category_id}', 'UsefulLinksController@oneCategoryVideos')->where(['category_id' => '[a-z0-9]+(?:-[a-z0-9]+)*'])->name('videos.category');
 });
 // Success Route
 Route::get('/success', function () {

@@ -34,36 +34,20 @@
                     <ul>
                         <li>
                             <a href="{{ route('home', ['lang' => $language_prefix]) }}">
-                                {{ getLanguageValue('Home') }}
+                                Home
                             </a>
                         </li>
+
                         <li>
-                            <a href="{{ route('faq', ['lang' => $language_prefix]) }}">
-                                {{ getLanguageValue('Faq') }}
+                            <a href="{{ route('consultant', ['lang' => $language_prefix]) }}">
+                                Consultant
                             </a>
                         </li>
+
                         <li>
                             <a href="{{ route('consultant', ['lang' => $language_prefix]) }}">
                                 {{ getLanguageValue('Consultant') }}
                             </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('videos', ['lang' => $language_prefix]) }}">
-                                {{ getLanguageValue('Videos') }}
-                            </a>
-                        </li>
-                        <li class="submenu">
-                            <a href="#0" class="show-submenu"><i class=" icon-language"></i></a>
-                            <ul>
-                                @foreach ($languages as $lang)
-                                <li>
-                                    <a href="{{ URL::current().'?lang='.$lang->prefix }}">
-                                    <img src="/assets/images/languages/{{ $lang->favicon }}" style="height: 20px; margin: 0px 5px">
-                                    {{ getLanguageValue($lang->language) }}
-                                    </a>
-                                </li>
-                                @endforeach
-                            </ul>
                         </li>
                     </ul>
                 </div>
