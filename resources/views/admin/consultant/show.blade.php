@@ -13,8 +13,6 @@
     <dt class="col-sm-3">Firstname</dt>
     <dd class="col-sm-9">{{ ucwords($consultant->firstname_booking) }}</dd>
 
-    <dt class="col-sm-3">Lastname</dt>
-    <dd class="col-sm-9">{{ ucwords($consultant->lastname_booking) }}</dd>
 
     <dt class="col-sm-3">Email Address</dt>
     <dd class="col-sm-9"><a href="mailto:{{ $consultant->email_booking }}">{{ ucwords($consultant->email_booking) }}</a></dd>
@@ -25,13 +23,6 @@
     <dt class="col-sm-3">Message</dt>
     <dd class="col-sm-9">{{ ucwords($consultant->message) }}</dd>
 
-    <dt class="col-sm-3">Images</dt>
-    <dd class="col-sm-9">
-        @foreach ($consultant->get_images as $image)
-        <a href="/images/consultants/{{ $image->images }}">
-                <img src="/images/consultants/{{ $image->images }}" style="width: 80px; height:80px; margin: 5px;">
-            </a> @endforeach
-    </dd>
 
     <dt class="col-sm-3">Consultant Id</dt>
     <dd class="col-sm-9">

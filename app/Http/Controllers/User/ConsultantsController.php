@@ -17,7 +17,7 @@ class ConsultantsController extends Controller
 
     public function index()
     {
-        return view('users.consultants')->with('pageTitle', 'Consultant')->with('pageBanner', 'Consultant');
+        return view('users.consultant')->with('pageTitle', 'Consultant')->with('pageBanner', 'Consultant');
     }
 
     public function store(Request $request)

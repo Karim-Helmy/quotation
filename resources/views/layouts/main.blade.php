@@ -52,7 +52,7 @@
         @yield('content')
     </main>
 
-    @include('includes.footer')
+   @include('includes.footer')
 
     <div id="toTop"></div>
 

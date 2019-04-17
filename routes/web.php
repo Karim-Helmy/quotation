@@ -84,8 +84,11 @@ Route::group(['middleware' => 'auth', 'namespace' => 'User'], function () {
     // Consultant Ends
 });
 /* -- -- -- -- Public Routes Starts -- -- -- -- */
-Route::group(['namespace' => 'Web'], function () {
-    Route::get('/', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'auth', 'namespace' => 'User'], function () {
+    Route::get('/', 'ConsultantsController@index', function()
+    {
+        return  redirect('/consultants');
+    })->name('home');
 
     Route::get('{username}/profile', 'ProfileController@publicProfile')
         ->where(['username' => '[a-z0-9]+(?:-[a-z0-9]+)*'])

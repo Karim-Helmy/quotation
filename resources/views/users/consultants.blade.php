@@ -4,9 +4,7 @@
 <div id="app">
     <app-consultant-component
     firstname="FirstName"
-    lastname="LastName"
     email="Email"
-    confirm-email="ConfirmEmail"
     contactinfo="ContactInfo"
     laravelroute="consultant.store"
     phone="Phone"

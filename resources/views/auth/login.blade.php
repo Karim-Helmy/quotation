@@ -3,7 +3,7 @@
 <div class="bg_color_2">
     <div class="container margin_60_35">
         <div id="login">
-            <h1>Please login to Findoctor!</h1>
+            <h1>Please login to Create Quotation!</h1>
             <div class="box_form">
                 @if (Session::has('status') && Session::get('status') == 'update')
                 <h5 id="relogin">

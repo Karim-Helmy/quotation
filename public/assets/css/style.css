@@ -209,7 +209,27 @@ hr.double {
   border-color: #ededed;
   border-width: 2px;
 }
-
+.test{
+    text-align:center;
+    border-style: solid;
+    border-width: 2px;
+    width: 50%;
+    margin: 0 auto;
+}
+.home_title:after {
+    display:block;
+    clear:both;
+    content : "";
+    position: relative;
+    left    : 0;
+    bottom  : 0;
+    max-width:250px;
+    height  : 2px;
+    width   : 50%;  /* or 100px */
+    border-bottom:1px solid #706b6bea;
+    margin:0 auto;
+    padding:4px 0px;
+}
 ul,
 ol {
   list-style: none;
@@ -430,7 +450,7 @@ a.btn_1,
 .btn_1 {
   border: none;
   color: #fff;
-  background: #e74e84;
+  background: #ff8c09;
   cursor: pointer;
   padding: 7px 20px;
   display: inline-block;
@@ -593,8 +613,8 @@ ul#top_access li#user figure img {
 #logo_home h1 a {
   width: 163px;
   height: 36px;
-  display: block;
-  background: url(../images/logo.png) no-repeat 0 0;
+
+  background: url(../images/Corpy-Core-Logo-011.png) no-repeat 0 0;
   background-size: 163px 36px;
   text-indent: -9999px;
 }
@@ -3874,7 +3894,7 @@ ul.treatments.checkout li.total {
 }
 
 .bg_color_2 {
-  background: #3f4079 url(../img/hero_bg_1.svg) repeat fixed;
+  background: #3f4079 url(../img/1ms.net_.jpg) repeat fixed;
 }
 
 .form-control {

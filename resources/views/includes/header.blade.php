@@ -4,7 +4,7 @@
             <div class="col-lg-3 col-6">
                 <div id="logo_home">
                     <h1><a href="/" title="{{ getLanguageValue('Cure2Us') }}">
-                    <img src="/images/logo.png" alt="">
+                    <img src="/images/Corpy-Core-Logo-011.png" alt="">
                     </a></h1>
                 </div>
             </div>
@@ -35,12 +35,6 @@
                         <li>
                             <a href="{{ route('home', ['lang' => $language_prefix]) }}">
                                 Home
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="{{ route('consultant', ['lang' => $language_prefix]) }}">
-                                Consultant
                             </a>
                         </li>
 

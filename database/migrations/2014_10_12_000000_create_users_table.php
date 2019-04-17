@@ -22,9 +22,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('api_token')->nullable();
-            $table->date('birth_date')->nullable();
-            $table->text('address')->nullable();
-            $table->enum('level',['admin', 'company', 'pharmacy', 'doctor', 'user']);
+            $table->enum('level',['super_admin','admin', 'user']);
             $table->rememberToken();
             $table->timestamps();
         });

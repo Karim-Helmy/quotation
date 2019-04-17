@@ -4,7 +4,7 @@
 <div class="bg_color_2">
         <div class="container margin_60_35">
             <div id="register">
-                <h1>Please register to Findoctor!</h1>
+                <h1>Please register to Create Quotation!</h1>
                 <div class="row justify-content-center">
                     <div class="col-md-5">
                         <form method="POST" action="{{ action('Auth\RegisterController@register') }}">
@@ -38,16 +38,7 @@
                                     @include('errors.SingleError', ['error_name' => 'phone'])
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="lavel">Register as </label>
-                                    <select name="level" id="level" class="form-control">
-                                        <option value="company">Company</option>
-                                        <option value="doctor">Doctor</option>
-                                        <option value="parent">Parent</option>
-                                        <option value="pharmacy">Pharmacy</option>
-                                    </select>
-                                    @include('errors.SingleError', ['error_name' => 'level'])
-                                </div>
+
 
                                 <div id="pass-info" class="clearfix"></div>
                                 <div class="checkbox-holder text-left">
