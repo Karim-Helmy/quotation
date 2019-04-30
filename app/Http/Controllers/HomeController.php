@@ -16,6 +16,7 @@ class HomeController extends Controller
         $this->middleware('auth');
         $this->middleware('web');
         $this->middleware('admin');
+        $this->middleware('superadmin');
     }
 
     /**

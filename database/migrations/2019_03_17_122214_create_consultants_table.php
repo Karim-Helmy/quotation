@@ -16,14 +16,14 @@ class CreateConsultantsTable extends Migration
         Schema::create('consultants', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->integer('admin_id');
-            $table->text('feedback');
-            $table->string('monthly_cost');
-            $table->string('total_cost');
-            $table->string('Compeletion_duration');
-            $table->enum('language',['ar','en','both']);
+            $table->integer('admin_id')->nullable();
+            $table->text('feedback')->nullable();
+            $table->string('monthly_cost')->nullable();
+            $table->string('total_cost')->nullable();
+            $table->string('Compeletion_duration')->nullable();
+            $table->enum('language',['ar','en','both'])->nullable();
             $table->string('name');
-            $table->string('email_booking');
+            $table->string('email');
             $table->string('phone');
             $table->mediumText('message');
             $table->enum('quotation_type',['facebook', 'instagram' ,'seo' ,'Web_site' ,'mobile_app','mobile_application']);

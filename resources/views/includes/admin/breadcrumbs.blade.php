@@ -1,6 +1,10 @@
 <ol class="breadcrumb">
     <li class="breadcrumb-item">
-        <a href="{{ route('admin.dashboard') }}">Dashboard</a>
+        @if(Auth::user()->level == 'admin')
+            <a href="{{ route('admin.dashboard') }}">Dashboard</a>
+        @elseif(Auth::user()->level=='super_admin')
+            <a href="{{ route('superadmin.dashboard') }}">Dashboard</a>
+        @endif
     </li>
     @foreach (Request::segments() as $key=>$item)
         @if ($loop->first)

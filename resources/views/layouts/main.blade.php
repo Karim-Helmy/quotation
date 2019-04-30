@@ -25,9 +25,7 @@
     <link href="/assets/css/menu.css" rel="stylesheet">
     <link href="/assets/css/vendors.css" rel="stylesheet">
     <link href="/assets/css/icon_fonts/css/all_icons_min.css" rel="stylesheet">
-    @if (getLanguageDirection() === 'rtl')
-    <link rel="stylesheet" href="/assets/css/rtlStyle.css">
-    @endif
+
 
     <link rel="stylesheet" href="/assets/css/app.css">
     <link href="/assets/css/custom.css" rel="stylesheet">

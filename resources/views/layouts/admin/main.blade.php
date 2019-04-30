@@ -8,10 +8,10 @@
     <meta name="description" content="">
     <meta name="author" content="Corpy">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{$setting->sitename}} - {{ (isset($pageTitle) ? $pageTitle : '') }}</title>
+    <title></title>
 
     <!-- Favicons-->
-    <link rel="shortcut icon" href="{{$setting->favicon}}" type="image/x-icon">
+    <link rel="shortcut icon" href="" type="image/x-icon">
     <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
@@ -37,9 +37,9 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-default fixed-top" id="mainNav">
 
-        <a class="navbar-brand" href="{{ route('admin.dashboard') }}">
+        <a class="navbar-brand" href="">
             <img
-                src="/assets/images/website/{{$setting->logo}}"
+                src=""
                 data-retina="true"
                 alt=""
                 height="36"
@@ -68,17 +68,12 @@
 
             @include('includes.admin.breadcrumbs')
 
-            <div class="box_general" style="padding-bottom: 10px">
-                <h4>
-                    {{ (isset($pageTitle)) ? $pageTitle : ''  }}
-                </h4>
-                <hr>
+
                 @include('includes.admin.results')
                 @include('includes.admin.errors')
 
                 @yield('content')
 
-            </div>
 
         </div>
     </div>

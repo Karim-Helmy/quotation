@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\QueryException;
+use Validator;
 
 class ConsultantsController extends Controller
 {
@@ -19,78 +20,39 @@ class ConsultantsController extends Controller
     {
         return view('users.consultant')->with('pageTitle', 'Consultant')->with('pageBanner', 'Consultant');
     }
-
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'firstname_booking' => 'required|string|max:255',
-            'lastname_booking' => 'required|string|max:255',
-            'email_booking' => 'required|email',
-            'telephone_booking' => 'required|numeric',
-            'message' => 'required|string|max:2000',
-            'files.*' => 'mimes:jpeg,bmp,png,pdf|max:5012',
+      $rules = [
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|max:11',
+            'quotation_type' => 'required',
+            'description' => 'required|string',
+        ];
+   $Validator   = Validator::make($request->all(),$rules);
+        $Validator->SetAttributeNames ([
         ]);
-
-        try {
-
-            $consultant = new Consultants();
-            $consultant->consultant_id = random_int(1, 3) . "-" . rand();
-            $consultant->firstname_booking = $request->firstname_booking;
-            $consultant->lastname_booking = $request->lastname_booking;
-            $consultant->email_booking = $request->email_booking;
-            $consultant->phone = $request->telephone_booking;
-            $consultant->message = $request->message;
-            $consultant->save();
-
-            foreach ($request->file('files') as $singleFile) {
-                $image = $singleFile;
-                $image_name = rand() . "_" . rand() . "_" . $image->getClientOriginalName();
-                $upload_path = public_path() . $this->path;
-                $image->move($upload_path, $image_name);
-                $newImage = new Consultants_Images();
-                $newImage->images = $image_name;
-                $consultant->get_images()->save($newImage);
-            }
-            return redirect()->route('successRoute')
-                ->with('status', 'success')
-                ->with('email', $request->email_booking)
-                ->with('username', $request->firstname_booking . " " . $request->lastname_booking);
-        } catch (ErrorException $err) {
-            return redirect('/');
+        if($Validator->fails())
+        {
+            return back()->withInput()->withErrors($Validator);
         }
-    }
+        else{
+        $consultant = new Consultants();
+        $consultant->user_id = Auth::user()->id;
+        $consultant->name = $request->input('name');
+        $consultant->email = $request->input('email');
+        $consultant->phone = $request->input('phone');
+        $consultant->quotation_type = $request->input('quotation_type');
+        $consultant->message = $request->input('description');
 
-    public function show($id)
-    {
-        $consultant = Consultants::where('consultant_id', $id)->firstOrFail();
-
-        if (!$consultant->doctors->contains(Auth::user()->id)) {
-            return abort(403);
+        $consultant->save();
+        return redirect('/');
         }
 
-        return view('users.oneConsultant')
-            ->with('pageTitle', 'Consultant #ID ' . $id)
-            ->with('pageBanner', 'Consultant #ID ' . $id)
-            ->with('consultant', $consultant);
     }
 
-    public function Replay(Request $request, $id)
-    {
-        $this->validate($request, [
-            'replay' => 'required|string|max:1000'
-        ]);
 
-        try {
-            DB::table('consultants__doctors__replay')->insert([
-                'doctor_id' => Auth::user()->id,
-                'consultant_id' => $id,
-                'replay' => $request->replay
-            ]);
-            return redirect()->route('successRoute')->with('status', 'success');
-        } catch (QueryException $th) {
-            return redirect()->route('profile.myProfile')->withErrors([
-                'error' => "An Error Occured Please Try Again Later"
-            ]);
-        }
-    }
+
+
+
 }

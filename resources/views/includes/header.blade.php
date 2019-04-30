@@ -13,7 +13,7 @@
                 <ul id="top_access">
                     @if (Auth::check())
                     <li>
-                        <a href="{{ route('profile.myProfile', ['lang' => $language_prefix]) }}" title="{{ getLanguageValue('Profile') }}">
+                        <a href="{{ route('profile.myProfile') }}" title="{{ getLanguageValue('Profile') }}">
                             <i class="pe-7s-user"></i>
                         </a>
                     </li>
@@ -33,13 +33,13 @@
                 <div class="main-menu">
                     <ul>
                         <li>
-                            <a href="{{ route('home', ['lang' => $language_prefix]) }}">
+                            <a href="{{ route('home') }}">
                                 Home
                             </a>
                         </li>
 
                         <li>
-                            <a href="{{ route('consultant', ['lang' => $language_prefix]) }}">
+                            <a href="{{ route('consultant') }}">
                                 {{ getLanguageValue('Consultant') }}
                             </a>
                         </li>

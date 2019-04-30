@@ -22,44 +22,43 @@ Auth::routes();
 Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
     Route::get('/', 'AdminController@index')->name('admin.dashboard');
-
-
-    /* -- -- -- Languages STARTS -- -- -- */
-    Route::get('languages', 'LanguagesController@index')->name('languages_index');
-    Route::get('language/create', 'LanguagesController@create')->name('language_new');
-    Route::post('language/create', 'LanguagesController@store')->name('languages_store');
-    Route::get('language/{id}', 'LanguagesController@edit')->name('language_edit')->where('id', '[0-9]+');
-    Route::patch('language/create', 'LanguagesController@update')->name('languages_update');
-    Route::post('language/activate', 'LanguagesController@Active')->name('activate_language');
-    Route::post('language/deactivate', 'LanguagesController@InActive')->name('deactivate_language');
-    Route::get('languages/labels', 'LanguagesController@labels')->name('languages_labels');
-    // Route::get('languages/values/create', 'LanguagesController@createValues')->name('values.create');
-    // Route::post('languages/values/create', 'LanguagesController@storeValues')->name('values.store');
-    Route::get('languages/key/create', 'LanguagesController@createKey')->name('key.create');
-    Route::post('languages/key/store', 'LanguagesController@storeKey')->name('key.store');
-    Route::get('languages/values/edit/{id}', 'LanguagesController@editValue')->name('values.edit');
-    Route::patch('/language/values/update/{id}', 'LanguagesController@updateValue')->name('values.update');
-    Route::get('/language/{language_id}/labels', 'LanguagesController@LanguageLabels')->where('language_id', '[0-9]+')->name('languages.labels');
-    Route::post('/language/{language_id}/store/labels', 'LanguagesController@storeLanguageLabel')->name('languages.labels.save');
-    // AJAX ROUTES
-    Route::post('/languages/categories', 'LanguagesController@getCategories')->name('getCategories');
-    /* -- -- -- Languages ENDS -- -- -- */
-
-    /* -- -- -- Website Settings STARTS -- -- -- */
-    Route::get('/settings', 'SettingsController@index')->name('settings_index');
-    Route::post('/settings/update', 'SettingsController@setting_save')->name('settings_update');
-    /* -- -- -- Website Settings Ends -- -- -- */
-
-
-    /* -- -- -- Consultant Module Starts -- -- -- */
-    Route::get('/consultants', 'ConsultantsController@index')->name('admin.consultant.index');
-    Route::get('/consultant/{id}', 'ConsultantsController@show')->name('admin.consultant.show')->where('id', '[0-9]+');
-    Route::post('/consultant/assign', 'ConsultantsController@assign')->name('admin.consultant.sendDoctor');
-    /* -- -- -- Consultant Module Ends -- -- -- */
-
-
-
+    Route::get('/', 'AdminController@show')->name('admin.dashboard');
+    Route::get('/showquotation/{id}', 'AdminController@showquotation')->name('ShowQuotation');
+    Route::get('/destroy/{id}', 'AdminController@destroy')->name('Destroy');
+    Route::get('forward/{id}','AdminController@forward')->name('forward');
 });
+Route::group(['middleware'=>['auth','superadmin'],'prefix'=>'superadmin',],function(){
+    //Route::get('/','super_admin@index')-name('superdashboard');
+    Route::get('/','superadmin@index')->name('superadmin.dashboard');
+    Route::get('/showquotation/{id}', 'superadmin@show')->name('showquotation');
+    Route::get('/destroy/{id}', 'superadmin@destroy')->name('Destroy');
+    Route::get('forward/{id}','superadmin@forward')->name('forward');
+    Route::get('calculate/{id}','superadmin@calculate')->name('calculate');
+    Route::get('recalculateview/{id}','superadmin@recalculateview')->name('recalculateview');
+    Route::post('recalculateview/{id}','superadmin@recalculate')->name('recalculate');
+    Route::post('/calculate/update/{id}', 'superadmin@update')->name('superadmin.update');
+});
+
+
+/*------------------------------ Super Admin Routes Starts ----------------------------*/
+Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
+    Route::get('/', 'AdminController@index')->name('admin.dashboard');
+    Route::get('/', 'AdminController@show')->name('admin.dashboard');
+    Route::get('/showquotation/{id}', 'AdminController@showquotation')->name('ShowQuotation');
+    Route::get('/destroy/{id}', 'AdminController@destroy')->name('Destroy');
+    Route::get('forward/{id}','AdminController@forward')->name('forward');
+});
+
+
+
+
+
+
+
+
+
+
+
 /* -- -- -- -- Admin Routes Ends -- -- -- -- */
 
 /* -- -- -- -- Users Routes Starts -- -- -- -- */
@@ -78,24 +77,21 @@ Route::group(['middleware' => 'auth', 'namespace' => 'User'], function () {
     // Rating System Ends
     // Consultant Starts
     Route::get('/consultant/request', 'ConsultantsController@index')->name('consultant');
-    Route::post('/consultant/request', 'ConsultantsController@store')->name('consultant.store');
-    Route::get('/consultant/{id}', 'ConsultantsController@show');
-    Route::post('/consultant/replay/{id}', 'ConsultantsController@Replay')->name('replay.consultant');
+    Route::post('/consultant/store', 'ConsultantsController@store')->name('consultant.store');
+
+
     // Consultant Ends
 });
 /* -- -- -- -- Public Routes Starts -- -- -- -- */
-Route::group(['middleware' => 'auth', 'namespace' => 'User'], function () {
+Route::group(['middleware' => ['auth' , 'user'], 'namespace' => 'User'], function () {
     Route::get('/', 'ConsultantsController@index', function()
     {
         return  redirect('/consultants');
     })->name('home');
-
     Route::get('{username}/profile', 'ProfileController@publicProfile')
         ->where(['username' => '[a-z0-9]+(?:-[a-z0-9]+)*'])
         ->name('profile.public');
     Route::get('/doctors', 'UsefulLinksController@doctors')->name('doctors');
-
-
 });
 // Success Route
 Route::get('/success', function () {
@@ -104,7 +100,6 @@ Route::get('/success', function () {
     }
     return view('public.success');
 })->name('successRoute');
-
 /* -- -- -- -- Public Routes Ends -- -- -- -- */
 
 
