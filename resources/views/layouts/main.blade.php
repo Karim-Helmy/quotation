@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Find easily a doctor and book online an appointment">
     <meta name="author" content="Ansonika">
-    <title>Cure 2 us | {{ (isset($pageTitle)) ? $pageTitle : '' }}</title>
+    <title>Quotation Management System | {{ (isset($pageTitle)) ? $pageTitle : '' }}</title>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -17,7 +17,7 @@
     <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="/assets/img/apple-touch-icon-72x72-precomposed.png">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="/assets/img/apple-touch-icon-114x114-precomposed.png">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="/assets/img/apple-touch-icon-144x144-precomposed.png">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <!-- BASE CSS -->
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet"> {{--
     <link href="/css/bootstrap-rtl.min.css" rel="stylesheet"> --}}

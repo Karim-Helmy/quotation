@@ -8,16 +8,22 @@ class AdminController extends Controller
 {
     public function index()
     {
-
         return view('/admin.index')
             ->with('pageTitle', 'Dashboard');
     }
     public function show()
     {
-        $quotations = DB::table('consultants')->get();
+        $quotations = DB::table('consultants')->paginate(20);
 
         return view ('/admin.index',compact('quotations'));
 
+    }
+
+    public function acceptedqauotations()
+    {
+        $quotations = DB::table('consultants')->where('approval' , '=' , '1')->paginate(20);
+        //dd($quotations);
+        return view ('/admin.accepted_quotations',compact('quotations'));
     }
 
     public function showquotation ($id){

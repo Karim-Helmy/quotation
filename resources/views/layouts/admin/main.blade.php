@@ -52,29 +52,16 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
-
             @include('includes.admin.sidebar')
-
             @include('includes.admin.navbar')
-
         </div>
-
-
     </nav>
-
-
     <div class="content-wrapper">
         <div class="container-fluid">
-
             @include('includes.admin.breadcrumbs')
-
-
                 @include('includes.admin.results')
                 @include('includes.admin.errors')
-
                 @yield('content')
-
-
         </div>
     </div>
     <!-- /.container-wrapper-->

@@ -99,7 +99,7 @@
                     <div   class="row">
                         <div   class="col-md-12">
                             <div   class="form-group text-center mt-30">
-                                <button  type="submit" class="btn btn-secondary">Re-calculate</button>
+                                <button  type="submit" class="btn btn-primary">Re-calculate</button>
                             </div>
                         </div>
                     </div>

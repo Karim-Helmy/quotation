@@ -11,6 +11,7 @@
         @if($quotation->forward ==0)
         <a href="{{ Route('forward',$quotation->id) }}" class="btn btn-xs  float-right" style="background-color: #17a2b8; color:azure ">Forward</a>
         @else
+        <h6 class="float-right">This Quotation has been forwarded</h6>
         @endif
     </div>
 

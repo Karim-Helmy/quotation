@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-3 col-6">
                 <div id="logo_home">
-                    <h1><a href="/" title="{{ getLanguageValue('Cure2Us') }}">
+                    <h1><a href="/" title="{{ getLanguageValue('Quotation Management System') }}">
                     <img src="/images/Corpy-Core-Logo-011.png" alt="">
                     </a></h1>
                 </div>
@@ -21,30 +21,33 @@
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
                             <button type="submit" class="btn-reomve" title="{{ getLanguageValue('Logout') }}">
-                                <i class="pe-7s-door-lock"></i>
+                                    <i class="fas fa-sign-out-alt"></i>
                             </button>
                         </form>
                     </li>
                     @else
-                    <li><a href="{{ route('login') }}"><i class="pe-7s-user"></i></a></li>
+                    <li><a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i></a></li>
                     <li><a href="{{ route('register') }}"><i class="pe-7s-add-user"></i></a></li>
                     @endif
                 </ul>
+                @if(Auth::check())
                 <div class="main-menu">
-                    <ul>
-                        <li>
-                            <a href="{{ route('home') }}">
-                                Home
-                            </a>
-                        </li>
+                        <ul>
+                            <li>
+                                <a href="{{ route('home') }}">
+                                    Add Quotation
+                                </a>
+                            </li>
 
-                        <li>
-                            <a href="{{ route('consultant') }}">
-                                {{ getLanguageValue('Consultant') }}
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                            <li>
+                                <a href="{{ route('consultant') }}">
+                                    {{ getLanguageValue('Consultant') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                @endif
+
                 <!-- /main-menu -->
             </nav>
         </div>

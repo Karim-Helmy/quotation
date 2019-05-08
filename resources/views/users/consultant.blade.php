@@ -1,17 +1,17 @@
 @extends('layouts.main')
 @section('content')
-
-
-
     <!-- Mobile menu overlay mask -->
-
     <div id="preloader" style="display: none;">
         <div data-loader="circle-side" style="display: none;"></div>
     </div>
     <!-- End Preload -->
-
-
     <main>
+            @if(session()->has('message'))
+
+            <div class="alert alert-success col-lg-12  text-center">
+               <h3> <b>{{ session()->get('message') }}</b> </h3>
+            </div>
+        @endif
 <div id="app">
     <div   class="container margin_60">
     <div   class="row">
@@ -22,7 +22,7 @@
                         <div   class="col-12">
                             </div>
                         </div>
-                         <h3   class="home_title" style="text-align:center">Quotation Info</h3>
+                         <h3   class="home_title" style="text-align:center">Add Quotation Info</h3>
 
         </div>
 

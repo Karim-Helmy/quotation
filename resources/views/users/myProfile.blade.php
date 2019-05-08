@@ -1,63 +1,95 @@
 @extends('layouts.main')
 @section('content')
-<div class="container margin_60">
-    <div class="row">
-        <div class="col-xl-8 col-lg-8">
-            <nav id="secondary_nav">
+<div class="container col-lg-11 box_general_3">
+<ul class="nav nav-tabs text-center" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#quotation" role="tab" aria-controls="quotation" aria-selected="false">Quotations</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <br>
                 <div class="container">
-                    <ul class="clearfix">
-                        <li><a href="#section_1" class="active">General info</a></li>
-                        <li><a href="#section_2">Reviews</a></li>
-                        <li><a href="#sidebar">Booking</a></li>
-                    </ul>
-                </div>
-            </nav>
-            <div id="section_1">
-                <div class="box_general_3">
-                    <div class="profile">
-                        <div class="row">
-                            <div class="col-lg-5 col-md-4">
-                                <figure>
-                                    <img src="http://via.placeholder.com/565x565.jpg" alt="" class="img-fluid">
-                                </figure>
-                            </div>
-                            <div class="col-lg-7 col-md-8">
-                                <small>{{ Auth::user()->level }}</small>
-                                <h1>{{ ucfirst(Auth::user()->name) }}</h1>
-                                <span class="rating">
+                    <h5>{{ Auth::user()->level }}</h5>
+                    <h1>{{ ucfirst(Auth::user()->name) }}</h1>
 
-                                    <i class="icon_star voted"></i>
-                                    <i class="icon_star"></i>
-                                    <small>({{ intval(Auth::user()->userAverageRating) }})</small>
-                                    <a href="badges.html" data-toggle="tooltip" data-placement="top" data-original-title="Badge Level" class="badge_list_1"><img src="img/badges/badge_1.svg" width="15" height="15" alt=""></a>
-                                </span>
-                                <ul class="statistic">
-                                    <li>854 Views</li>
-                                    <li>124 Patients</li>
-                                </ul>
-                                <ul class="contacts">
-                                    <li>
-                                        <h6>Mail</h6>
-                                        {{ ucfirst(Auth::user()->email) }}
-                                        <a href="https://www.google.com/maps/dir//Assistance+%E2%80%93+H%C3%B4pitaux+De+Paris,+3+Avenue+Victoria,+75004+Paris,+Francia/@48.8606548,2.3348734,14z/data=!4m15!1m6!3m5!1s0x0:0xa6a9af76b1e2d899!2sAssistance+%E2%80%93+H%C3%B4pitaux+De+Paris!8m2!3d48.8568376!4d2.3504305!4m7!1m0!1m5!1m1!1s0x47e67031f8c20147:0xa6a9af76b1e2d899!2m2!1d2.3504327!2d48.8568361"
-                                            target="_blank"> <strong> View on map</strong></a>
-                                    </li>
-                                    <li>
-                                        <h6>Phone</h6> <a href="tel://{{ Auth::user()->phone }}">{{ Auth::user()->phone }}</a></li>
-                                </ul>
-                            </div>
+                    <h5>Mail</h5>
+                    <h3>{{ ucfirst(Auth::user()->email) }}</h3>
+                    <h5>Phone</h5>
+                    <a href="tel://{{ Auth::user()->phone }}">{{ Auth::user()->phone }}</a></li>
+
+                </div>
+            </div>
+            <div class="tab-pane fade" id="quotation" role="tabpanel" aria-labelledby="quotation-tab">
+                <br>
+                <div class="container col-lg-12">
+                    <table class="table ">
+                            <thead>
+                              <tr>
+                                <th scope="col">Quotation code</th>
+                                <th scope="col">Quotation type</th>
+                                <th scope="col">Language</th>
+                                <th scope="col">Admin feedback</th>
+                                <th scope="col">Monthly cost</th>
+                                <th scope="col">Duration</th>
+                                <th scope="col">Total cost</th>
+                                <th scope="col">Approval</th>
+                                <th scope="col">View</th>
+                                <th scope="col">Delete</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($quotations as $quotation)
+                                <tr>
+                                    <td>{{ $quotation->quotation_code }}</td>
+                                    <td> {{ $quotation->quotation_type  }} </td>
+                                    <td> {{ $quotation->language  }} </td>
+                                    <td> {{ str_limit($quotation->feedback,30)  }} </td>
+                                    <td> {{ $quotation->monthly_cost  }} </td>
+                                    <td> {{ $quotation->Compeletion_duration  }} </td>
+                                    <td> {{ $quotation->total_cost  }} </td>
+                                    <td>
+                                      @if($quotation->approval == 1)
+                                            Approved
+                                      @elseif($quotation->approval == null)
+                                            Waiting For Approval
+                                      @else
+                                            rejected
+                                      @endif
+                                    </td>
+                                    <td><a href="{{ Route('showuserquotation',$quotation->id)}} "class="btn btn-primary btn-sm">View</a></td>
+                                    @if($quotation->seen == 0)
+                                    <td><a href="{{ Route('Destroyfromuser',$quotation->id)}}"style="margin:5px;" class="btn btn-danger  btn-sm"  title="Msg to be shown" onclick="return confirm('Are you sure you want to delete this item?');" >Delete  </a></td>
+                                    @else
+                                    <td><span class="tool-tip" data-toggle="tooltip"  title="You can't Delete this quotation as it hes been forwarded to admin"><a href="#"style="margin:5px;" title="Msg to be shown" class="btn btn-danger btn-disabled btn-sm" onclick="return false;" class="disabled" >Delete  </a></td>
+                                    </span>
+                                    @endif
+                                </tr>
+                            @endforeach
+
+                            </tbody>
+                          </table>
                         </div>
                     </div>
-
-                    <hr>
-
-
-
-
-
-
-        <!-- /asdide -->
+                    
+      </div>
     </div>
-    <!-- /row -->
-</div>
+    <style>
+
+            .btn-disabled,
+            .btn-disabled[disabled] {
+            opacity: .4;
+            cursor: default !important;
+            pointer-events: none;
+            }
+            .tool-tip [disabled] {
+            pointer-events: none;
+            }
+    </style>
+    <script>$ ->
+        $('[data-toggle="tooltip"]').tooltip()
+        </script>
 @endsection

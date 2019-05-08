@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\PasswordRequest;
 use Illuminate\Database\QueryException;
 use App\Http\Requests\uploadImageRequest;
-
+use DB;
 class ProfileController extends Controller
 {
     public $path = "/assets/images/users/";
@@ -20,33 +20,9 @@ class ProfileController extends Controller
 
     public function myProfile()
     {
-        return view('users.myProfile')->with('pageTitle', ucfirst(Auth::user()->name) . ' Profile');
-    }
+        $quotations = DB::table('consultants')->where('user_id','=',Auth::user()->id)->get();
+        //dd($quotations);
 
-    public function whoRate()
-    { }
-
-    public function uploadImage(uploadImageRequest $request)
-    {
-    }
-
-    public function updateAddress(Request $request)
-    {
-
-    }
-
-    public function updatePhone(Request $request)
-    {
-
-    }
-
-    public function updateInfo(Request $request)
-    {
-
-    }
-
-    public function updatePassword(PasswordRequest $request)
-    {
-
+        return view('users.myProfile',compact('quotations'))->with('pageTitle', ucfirst(Auth::user()->name) . ' Profile');
     }
 }

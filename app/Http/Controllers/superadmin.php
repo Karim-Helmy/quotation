@@ -14,7 +14,7 @@ class superadmin extends Controller
      */
     public function index()
     {
-        $quotations = DB::table('consultants')->get();
+        $quotations = DB::table('consultants')->where('forward', '=' ,'1')->paginate(20);
         //dd($quotations);
         return view('/super_admin/index',compact('quotations'));
     }
@@ -95,7 +95,8 @@ class superadmin extends Controller
                     'total_cost' => $request->input('tcost'),
                     'Compeletion_duration' => $request->input('duration'),
                     'language' => $request->input('lang'),
-                    'feedback' => $request->input('feedback')
+                    'feedback' => $request->input('feedback'),
+                    'approval'=>'1'
                     ]);
                 return redirect('/superadmin');
             }
@@ -110,7 +111,7 @@ class superadmin extends Controller
     public function destroy($id)
     {
         DB::table('consultants')->where('id', '=', $id)->delete();
-        return redirect('/');
+        return redirect('/superadmin');
     }
     public function calculate($id){
        // dd($id);
@@ -144,11 +145,19 @@ class superadmin extends Controller
                     'total_cost' => $request->input('tcost'),
                     'Compeletion_duration' => $request->input('duration'),
                     'language' => $request->input('lang'),
-                    'feedback' => $request->input('feedback')
+                    'feedback' => $request->input('feedback'),
+                    'approval'=>'1'
                     ]);
 
                 return redirect()->route('showquotation', ['id' => $id]);
             }
     }
 
+    public function reject($id){
+        DB::table('consultants')->where('id',$id)
+        ->update([
+            'approval'=>'0'
+        ]);
+        return back();
+    }
 }

@@ -27,6 +27,8 @@ class CreateConsultantsTable extends Migration
             $table->string('phone');
             $table->mediumText('message');
             $table->enum('quotation_type',['facebook', 'instagram' ,'seo' ,'Web_site' ,'mobile_app','mobile_application']);
+            $table->string('quotation_code');
+            $table->string('approval');
             $table->timestamps();
         });
     }
