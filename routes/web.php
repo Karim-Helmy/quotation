@@ -35,6 +35,7 @@ Route::group(['middleware'=>['auth','superadmin'],'prefix'=>'superadmin',],funct
     Route::get('/','superadmin@index')->name('superadmin.dashboard');
     Route::get('/showquotation/{id}', 'superadmin@show')->name('showquotation');
     Route::get('reject/{id}', 'superadmin@reject')->name('reject');
+    Route::get('approve/{id}', 'superadmin@approve')->name('approve');
     Route::get('/destroy/{id}', 'superadmin@destroy')->name('Destroyfromsuper');
     Route::get('calculate/{id}','superadmin@calculate')->name('calculate');
     Route::get('recalculateview/{id}','superadmin@recalculateview')->name('recalculateview');

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="{{ getLanguagePrefix() }}">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,9 +7,7 @@
     <meta name="description" content="Find easily a doctor and book online an appointment">
     <meta name="author" content="Ansonika">
     <title>Quotation Management System | {{ (isset($pageTitle)) ? $pageTitle : '' }}</title>
-
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <!-- Favicons-->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" type="image/x-icon" href="/assets/img/apple-touch-icon-57x57-precomposed.png">
@@ -25,17 +22,11 @@
     <link href="/assets/css/menu.css" rel="stylesheet">
     <link href="/assets/css/vendors.css" rel="stylesheet">
     <link href="/assets/css/icon_fonts/css/all_icons_min.css" rel="stylesheet">
-
-
     <link rel="stylesheet" href="/assets/css/app.css">
     <link href="/assets/css/custom.css" rel="stylesheet">
-
     <script src="/assets/js/modernizr.js"></script>
-
 </head>
-
 <body>
-
     <div class="layer"></div>
     <!-- Mobile menu overlay mask -->
 
@@ -44,26 +35,17 @@
     </div>
     <!-- End Preload -->
     @include('includes.header')
-
-
     <main>
         @yield('content')
     </main>
-
-   @include('includes.footer')
-
     <div id="toTop"></div>
-
     <!-- COMMON SCRIPTS -->
     <script src="/assets/js/jquery-2.2.4.min.js"></script>
     <script src="/assets/js/common_scripts.min.js"></script>
-
     {{--
     <script src="/js/bootstrap.min.js"></script> --}} {{--
     <script src="/js/bootstrap.bundle.min.js"></script> --}}
-
     <script src="/assets/js/functions.js"></script>
-
     <!-- SPECIFIC SCRIPTS -->
     <script src="/assets/js/video_header.js"></script>
     <script src="/assets/js/custom.js"></script>
@@ -80,5 +62,4 @@
     {{-- VUE COMPONENTS --}}
     <script src="/assets/js/app.js" defer></script>
 </body>
-
 </html>

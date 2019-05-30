@@ -31,7 +31,7 @@
                         <div   class="col-md-8 col-sm-8">
                             <div class="form-group">
                                 <label>E-mail</label>
-                                @if($quotation->total_cost  != null)
+                                @if($quotation->email  != null)
                                 <input type="email" value="{{ $quotation->email }}"  name="email" placeholder="Enter email" class="form-control">
                                 @else
                                 <input type="email"  name="email" placeholder="Enter Email" class="form-control">
@@ -108,7 +108,7 @@
                             <div   class="col-md-12">
                                 <div   class="form-group">
                                     <label   for="description">Services Description </label>
-                                    <textarea   name="description" value="{{ $quotation->message }}" class="form-control" style="height: 120px;">
+                                    <textarea  name="description"  class="form-control" style="height: 120px;">{{ $quotation->message }}
                                     </textarea>
                                 </div>
                             </div>
@@ -116,7 +116,7 @@
                     <div   class="row">
                         <div   class="col-md-12">
                             <div   class="form-group text-center mt-30">
-                                <button  type="submit" class="btn btn-secondary">Submit</button>
+                                <button  type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </div>
                     </div>

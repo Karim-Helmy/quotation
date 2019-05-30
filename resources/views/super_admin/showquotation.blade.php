@@ -41,11 +41,14 @@
       @else
       @endif
       <a href="{{ Route('Destroyfromsuper',$quotation->id)}}"style="margin:5px;" class="btn btn-danger col-lg-2 float-right btn-sm" onclick="return confirm('Are you sure you want to delete this item?');" >Delete  </a>
-    @if($quotation->monthly_cost || $quotation->total_cost)
-    <a href="{{ Route('recalculateview',$quotation->id)}}" class="btn btn-sm col-lg-2 float-right" style="background-color: #17a2b8; margin:5px; color:azure ">Re-Calculate</a>
-    @else
-    <a href="{{ Route('calculate',$quotation->id)}}" class="btn btn-sm col-lg-2 float-right" style="background-color: #17a2b8; margin:5px; color:azure ">Calculate</a>
+    @if($quotation->approval != 0 )
+        @if($quotation->monthly_cost || $quotation->total_cost)
+        <a href="{{ Route('recalculateview',$quotation->id)}}" class="btn btn-sm col-lg-2 float-right" style="background-color: #17a2b8; margin:5px; color:azure ">Re-Calculate</a>
+        @else
+        <a href="{{ Route('calculate',$quotation->id)}}" class="btn btn-sm col-lg-2 float-right" style="background-color: #17a2b8; margin:5px; color:azure ">Calculate</a>
+        @endif
     @endif
+
 
 
     </div>

@@ -4,7 +4,7 @@
 <div class="card border-info mb-3 clo-lg-8" >
         <div class="card-header">Quotation Code : {{ ucfirst( $quotation->quotation_code)  }}</div>
         <div class="card-body text-info">
-          <h5 class="card-title">Quotation Nam : {{  ucfirst( $quotation->name) }}</h5>
+          <h5 class="card-title">Quotation Name : {{  ucfirst( $quotation->name) }}</h5>
           <h5 class="card-title">Quotation Type : {{  ucfirst( $quotation->quotation_type) }}</h5>
           <p class="card-text"><div class="span">Quotation :</div>{{ $quotation->message }}</p>
           @if($quotation->total_cost)

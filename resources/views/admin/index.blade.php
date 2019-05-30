@@ -10,8 +10,8 @@
         <th scope="col">Email</th>
         <th scope="col">Phone</th>
         <th scope="col">Ordered at</th>
-        <th scope="col">Status</th>
-        <th scope="col">Forward</th>
+        <th scope="col">view</th>
+        <th scope="col">Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -35,9 +35,13 @@
                 <td>
                 <a href="{{ Route('ShowQuotation',$quotation->id)}} " style="background-color: rgba(0,139,139,1); color:azure;" class="btn btn-sm">View</a>
                 </td>
+                @if($quotation->forward !=1)
                 <td>
                     <a href="{{ Route('Destroy',$quotation->id)}}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger btn-sm">Delete</a>
                 </td>
+                @else
+                @endif
+
             </tr>
         @else
         <tr style="background-color: rgba(0,139,139,0.1)">
@@ -58,6 +62,7 @@
                 <td>
                 <a href="{{ Route('ShowQuotation',$quotation->id)}} "class="btn btn-success btn-sm">View</a>
                 </td>
+
                 <td>
                     <a href="{{ Route('Destroy',$quotation->id)}}" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger btn-sm">Delete</a>
                 </td>

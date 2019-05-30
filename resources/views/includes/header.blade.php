@@ -38,12 +38,6 @@
                                     Add Quotation
                                 </a>
                             </li>
-
-                            <li>
-                                <a href="{{ route('consultant') }}">
-                                    {{ getLanguageValue('Consultant') }}
-                                </a>
-                            </li>
                         </ul>
                     </div>
                 @endif

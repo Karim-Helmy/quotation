@@ -160,4 +160,11 @@ class superadmin extends Controller
         ]);
         return back();
     }
+    public function approve($id){
+        DB::table('consultants')->where('id',$id)
+        ->update([
+            'approval'=>'1'
+        ]);
+        return back();
+    }
 }

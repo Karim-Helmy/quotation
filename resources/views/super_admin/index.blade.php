@@ -42,12 +42,12 @@
                     <a href="{{ Route('showquotation',$quotation->id)}} "class="btn btn-success btn-sm">View</a>
                 </td>
                 <td>
-                    @if($quotation->approval == '1')
+                    @if($quotation->approval == '1' ||$quotation->approval ==null)
                     <a href="{{ Route('reject',$quotation->id)}} "class="btn btn-danger btn-sm">Reject</a>
                     @else
-                    <span class="tool-tip" data-toggle="tooltip"  title="the quotation is already rejected"><a href="#"style="margin:5px;" title="Msg to be shown" class="btn btn-danger btn-disabled btn-sm" onclick="return false;" class="disabled" >Reject  </a>
+                    <a href="{{ Route('approve',$quotation->id)}} "class="btn btn-primary btn-sm">Approve</a>
                     @endif
-                    
+
                 </td>
             </tr>
             @endforeach
